@@ -15,12 +15,12 @@ const handleButtonClick = (title) => {
 }
 }
   return (
-    <nav className='flex justify-evenly'>
-<Button onClick={()=>handleButtonClick()} className={router.pathname === "/" ? 'active-link' : ''}>Home</Button>
-      <Button onClick={()=>handleButtonClick('city')} className={router.pathname === "/city" ? 'active-link' : ''}>City</Button>
-      <Button onClick={()=>handleButtonClick('country')} className={router.pathname === "/country" ? 'active-link' : ''}>Country</Button>
-      <Button onClick={()=>handleButtonClick('food')} className={router.pathname === "/food" ? 'active-link' : ''}>Food</Button>
-      <Button onClick={()=>handleButtonClick('people')} className={router.pathname === "/people" ? 'active-link' : ''}>People</Button>
+    <nav className='flex justify-evenly z-5'>
+      <Button onClick={()=>handleButtonClick()}>Home</Button>
+      <Button onClick={()=>handleButtonClick('city')} >City</Button>
+      <Button onClick={()=>handleButtonClick('country')} >Country</Button>
+      <Button onClick={()=>handleButtonClick('food')} >Food</Button>
+      <Button onClick={()=>handleButtonClick('people')} >People</Button>
     </nav>
   );
 };

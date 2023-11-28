@@ -7,8 +7,10 @@ const Examples = () => {
   const router = useRouter();
   return (
     <Layout>
-      <h1 className='text-center'>{router.query.examples}</h1>
-      <PexelsApi theme={router.query.examples} />
+      
+      <PexelsApi theme={router.query.examples}>
+      </PexelsApi>
+
     </Layout>
   );
 };

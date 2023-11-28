@@ -71,8 +71,9 @@ setSearchInput( [...localSearchState])
 useEffect(()=> {
 setLocalSearchState(searchInput)
 },[searchInput])
-  return (
-    <>
+  return(
+    <div className='flex justify-center items-center w-full h-full fixed top-0 left-0 z-0 invisible'>
+<div className=' flex justify-center items-center w-100 bg-gradient-to-r from-blue-500 to-transparent z-0 visible'>
     <Stack spacing={3} sx={{ width: 500 }}>
     <Button variant="contained" onClick={handleSendSearch}> Send</Button>
       <Autocomplete
@@ -97,7 +98,8 @@ setLocalSearchState(searchInput)
         )}
       />
     </Stack>
-    </>
+    </div>
+    </div>
   );
 };
 

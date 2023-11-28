@@ -4,7 +4,7 @@ import { createClient } from 'pexels';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SearchQueryContext} from '@/components/searchInputStateContext';
-
+import Title from '@/components/heroTitle.js'
 
 
 
@@ -13,7 +13,8 @@ import { SearchQueryContext} from '@/components/searchInputStateContext';
 
 const PexelsApi = ({ theme }) => {
   const [collection, setCollection] = useState([]);
-  const { searchInput } = useContext(SearchQueryContext)
+  const { searchInput } = useContext(SearchQueryContext);
+  const [heroPhoto, setHeroPhoto] =useState({})
   const fetchData = async () => {
     console.log(theme)
     try {
@@ -38,6 +39,13 @@ const PexelsApi = ({ theme }) => {
       console.error('Error: ', error);
     }
   };
+  useEffect(() => {
+    if (collection.length > 0) {
+      const randomIndex = Math.floor(Math.random() * collection.length);
+      const selectedPhoto = collection[randomIndex];
+      setHeroPhoto(selectedPhoto);
+    }
+  }, [collection]);
 
   useEffect(() => {
     fetchData();
@@ -47,10 +55,25 @@ const PexelsApi = ({ theme }) => {
     const shuffled = arr.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, n);
   };
-
+console.log(heroPhoto)
   // Render the component
   return (
-    <div className='columns-6'>
+    <>
+    {heroPhoto.src && (
+  <div
+    className="w-full min-h-screen flex items-center justify-center nb"
+    id="curatedHero"
+    style={{
+      backgroundImage: `url(${heroPhoto.src.xxlarge || heroPhoto.src.original}?auto=format&fit=crop)`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+    }}
+  >
+    <Title />
+  </div>
+)}
+    <div className='mx-12 columns-4 z-50'>
       {collection.map((photo) => (
         <div key={photo.id} className='mb-4'>
           <Link href="/photos/[id]" as={`/photos/${photo.id}`} passHref>
@@ -65,6 +88,7 @@ const PexelsApi = ({ theme }) => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 

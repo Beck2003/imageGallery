@@ -18,5 +18,5 @@ Multiple separate pages using React Router and a navigation system to go between
 
 tasks for the gallary
 -create a component that brings up a new page with a full screen image that was clicked on(needs to make a new page)
--have a navigation bar wich can allow you to sort through images.
--have the images update automaticaly( update state).
+-light and dark mode with new context.
+-reducer

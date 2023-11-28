@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
 
      <SearchQueryContextProvider>
       <Navbar />
-      <SearchBar />
+      <SearchBar/>
       <main>{children}</main>
       </SearchQueryContextProvider>
 
