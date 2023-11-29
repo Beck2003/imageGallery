@@ -1,22 +1,4 @@
-// 'use client'
-
-// import React, { createContext, useContext, useState } from 'react';
-
-// export const SearchQueryContext = createContext();
-
-// export const SearchQueryContextProvider = ( { children }) => {
-//     const [ searchInput, setSearchInput ] = useState([]);
-//     //globel searchinput value
-// return (
-//     <SearchQueryContext.Provider value={{ searchInput, setSearchInput }}>
-//         { children } 
-//     </SearchQueryContext.Provider>
-// );
-// };
-
-
-// 'use client'
-import React, { createContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { createClient } from 'pexels';
 
 // Action types
@@ -37,7 +19,7 @@ const searchQueryReducer = (state, action) => {
 
 // Initial state
 const initialState = {
-  searchInput: '',
+  searchInput: [],
   collection: [],
 };
 
@@ -78,10 +60,9 @@ export const SearchQueryContextProvider = ({ children }) => {
 
     fetchDataAndSetCollection();
   }, [state.searchInput]);
-
+// search
   return (
     <SearchQueryContext.Provider value={{ ...state, setSearchInput, setCollection }}>
       {children}
     </SearchQueryContext.Provider>
-  );
-};
+  )};
