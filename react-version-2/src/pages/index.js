@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <Layout>
      
-         <PexelsApi theme= {searchInput }/>
+         <PexelsApi theme= {searchInput }><Navbar /></PexelsApi>
        </Layout>
   )
 }

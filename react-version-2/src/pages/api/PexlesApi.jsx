@@ -7,6 +7,7 @@
  import Image from 'next/image';
  import { SearchQueryContext } from '@/components/searchInputStateContext';
   import Title from '@/components/heroTitle';
+import Navbar from '@/components/navbar';
   export const fetchData = async (searchInput, theme) => {
     console.log(searchInput, theme);
     try {
@@ -63,6 +64,7 @@
 
   return (
     <>
+    <Navbar />
       {heroPhoto.src && (
         <div
           className="w-full min-h-screen flex items-center justify-center nb"
@@ -79,7 +81,7 @@
           <Title />
         </div>
       )}
-      <div className='mx-12 columns-4 z-50'>
+      <div className='mx-12 columns-4 z-50 mt-5'>
         {collection.map((photo) => (
           <div key={photo.id} className='mb-4'>
             <Link href={`/photos/${photo.id}?theme=${theme}`} passHref>
