@@ -1,16 +1,14 @@
 import SearchBar from "./SearchBarLayout.js";
 import Navbar from "./navbar.jsx";
-import { SearchQueryContextProvider } from "./searchInputStateContext.js";
+import { SearchQueryContextProvider } from "./GlobalStates.js";
 
 const Layout = ({ children }) => {
   return (
-
-     <SearchQueryContextProvider>
+    <SearchQueryContextProvider>
       {/* <Navbar /> */}
-      <SearchBar/>
+      {/* <SearchBar /> */}
       <main>{children}</main>
-      </SearchQueryContextProvider>
-
+    </SearchQueryContextProvider>
   );
 };
 

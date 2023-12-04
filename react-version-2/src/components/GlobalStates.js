@@ -53,6 +53,7 @@ export const SearchQueryContextProvider = ({ children }) => {
 
         const photos = data?.photos || [];
         setCollection(photos);
+        console.log('Globalstate Collection', photos)
       } catch (error) {
         console.error('Error fetching data:', error);
       }

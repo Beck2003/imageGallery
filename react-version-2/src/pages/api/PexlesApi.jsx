@@ -5,11 +5,11 @@
  import { createClient } from 'pexels';
  import Link from 'next/link';
  import Image from 'next/image';
- import { SearchQueryContext } from '@/components/searchInputStateContext';
+ import { SearchQueryContext } from '@/components/GlobalStates.js';
   import Title from '@/components/heroTitle';
 import Navbar from '@/components/navbar';
+import SearchBar from '@/components/SearchBarLayout';
   export const fetchData = async (searchInput, theme) => {
-    console.log(searchInput, theme);
     try {
       let data;
       if (!theme?.length && !searchInput?.length) {
@@ -18,6 +18,7 @@ import Navbar from '@/components/navbar';
       } else {
         const client = createClient('RmnyE1ueR0YTPYy3POfjzBavsu1z1gjUiKdA7N2D7KtRtkDStsSIfl5V');
         data = await client.photos.search({ query: searchInput?.length ? searchInput : theme, per_page: 40 });
+        console.log('api data:',  data )
       }
       const photos = data?.photos || [];
       return photos;
@@ -31,8 +32,7 @@ import Navbar from '@/components/navbar';
     return shuffled.slice(0, n);
   };
   const PexelsApi = ({ theme }) => {
-  const [collection, setCollection] = useState([]);
-  const { searchInput } = useContext(SearchQueryContext);
+  const { searchInput, collection, setCollection} = useContext(SearchQueryContext);
   const [heroPhoto, setHeroPhoto] = useState({});
   useEffect(() => {
     const fetchDataAndSetCollection = async () => {
@@ -59,17 +59,17 @@ import Navbar from '@/components/navbar';
       setHeroPhoto(selectedPhoto);
     }
   }, [collection]);
-
-  console.log(theme);
-
+console.log('collection: ',collection)
+console.log('heroPhoto: ',heroPhoto)
   return (
     <>
+    <SearchBar />
     <Navbar />
       {heroPhoto.src && (
+        <Link href={`/photos/${heroPhoto.id}?theme=${theme}`} passHref>
         <div
           className="w-full min-h-screen flex items-center justify-center nb"
           id="curatedHero"
-          loading='eager'
           style={{
             backgroundImage: `url(${heroPhoto.src.xxlarge || heroPhoto.src.original}?auto=format&fit=crop)`,
             backgroundSize: 'cover',
@@ -80,8 +80,10 @@ import Navbar from '@/components/navbar';
         >
           <Title />
         </div>
+        </Link>
       )}
-      <div className='mx-12 columns-4 z-50 mt-5'>
+
+      <div className='mx-12 columns-1 sm:columns-2 md:columns-3 lg:columns-4 z-50 mt-5'>
         {collection.map((photo) => (
           <div key={photo.id} className='mb-4'>
             <Link href={`/photos/${photo.id}?theme=${theme}`} passHref>
@@ -91,13 +93,13 @@ import Navbar from '@/components/navbar';
                 width={photo.width}
                 height={photo.height}
                 className="max-w-full h-auto"
-                priority
+                loading='lazy'
               />
             </Link>
           </div>
         ))}
       </div>
-    </>
+      </>
   );
 };
 

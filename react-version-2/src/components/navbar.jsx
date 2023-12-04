@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
-import { SearchQueryContext } from './searchInputStateContext';
+import { SearchQueryContext } from './GlobalStates';
 export default function Navbar() {
   const router = useRouter();
   const { setSearchInput } = useContext(SearchQueryContext)
