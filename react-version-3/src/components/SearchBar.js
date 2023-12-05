@@ -115,8 +115,8 @@ const SearchBar = () => {
         </Stack>
       </div>
     ) : (
-      <div className='flex justify-center items-end w-full h-full absolute bottom-40 z-0 invisible'>
-        <div className='flex justify-center items-center w-5/6 sm:w-[500px] bg-gradient-to-r from-blue-500 to-transparent z-0 visible'></div>
+      <div className='absolute left-1/2 transform -translate-x-1/2 bottom-1/4'>
+        <div className='flex justify-center items-center bg-gradient-to-r from-blue-500 to-transparent z-3 '></div>
       <Stack spacing={3} sx={{ width: 500 }}>
           <Button variant='contained' onClick={handleSendSearch}>
             {' '}
