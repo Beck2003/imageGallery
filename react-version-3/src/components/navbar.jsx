@@ -17,13 +17,13 @@ export default function Navbar() {
     }
   };
   return (
-    <div className='bg-opacity-95 absolute top-0 left-0 w-full'>
+    <div className='bg-gray-500 bg-opacity-50 absolute top-0 left-0 w-full backdrop-blur-md'>
       <nav className='flex justify-evenly z-5 '>
-        <Button onClick={() => handleButtonClick()}>Home</Button>
-        <Button onClick={() => handleButtonClick('city')}>City</Button>
-        <Button onClick={() => handleButtonClick('country')}>Country</Button>
-        <Button onClick={() => handleButtonClick('food')}>Food</Button>
-        <Button onClick={() => handleButtonClick('people')}>People</Button>
+        <Button className='text-white ' onClick={() => handleButtonClick()}>Home</Button>
+        <Button className='text-white ' onClick={() => handleButtonClick('city')}>City</Button>
+        <Button className='text-white' onClick={() => handleButtonClick('country')}>Country</Button>
+        <Button className='text-white' onClick={() => handleButtonClick('food')}>Food</Button>
+        <Button className='text-white' onClick={() => handleButtonClick('people')}>People</Button>
       </nav>
     </div>
   );

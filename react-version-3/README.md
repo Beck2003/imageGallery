@@ -1,9 +1,4 @@
-npm run dev
-
-things to do
-
-andrews api code andrews api code: RmnyE1ueR0YTPYy3POfjzBavsu1z1gjUiKdA7N2D7KtRtkDStsSIfl5V
-
+Welcome to are Image Gallery powered by Pexels. here are the goals demonstrated through this app.
 
 goals of the project;
 Demonstrate proficiency in all common React Hooks

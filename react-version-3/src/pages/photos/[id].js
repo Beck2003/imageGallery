@@ -18,8 +18,8 @@ const Photo = () => {
 
   return (
     <>
-    <Button onClick={backButton}><CloseIcon /></Button>
-    <div className='relative top-0 left-0 z-0' style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Button onClick={backButton}><CloseIcon className='text-black' /></Button>
+    <div className='relative top-0 left-0 z-0 min-h-screen' style={{  display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       {photo && (
         <Image
           src={photo.src.original}
